@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Choco-Mengga Ball - Fresh Bakery</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    /* Ensure login page shows first - will be overridden by JavaScript */
+    #mainNav { display: none; }
+    #mainHero { display: none; }
+    #authContainer { display: block; }
+    </style>
+    </head>
+
+    <body>
+
+    <!-- ================= LOGIN & SIGNUP ================= -->
+
+    <div class="container" id="authContainer">
+
+    <!-- SIGN UP -->
+    <div id="signupBox" class="hidden">
+    <h2>Create Account</h2>
+
+    <input type="text" id="username" placeholder="Username">
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <input type="password" id="confirmPassword" placeholder="Confirm Password">
+
+    <button onclick="signup()">Sign Up</button>
+
+    <p class="switch" onclick="showLogin()">Already have an account? Login</p>
+    <p class="message" id="signupMsg"></p>
+    </div>
+
+    <!-- LOGIN -->
+    <div id="loginBox">
+    <h2>Login</h2>
+
+    <input type="text" id="loginUser" placeholder="Username or Email">
+    <input type="password" id="loginPass" placeholder="Password">
+
+    <button onclick="login()">Login</button>
+
+    <p class="switch" onclick="showSignup()">Don't have an account? Sign Up</p>
+    <p class="message" id="loginMsg"></p>
+    </div>
+
+    </div>
+
+    <!-- ================= HOME PAGE ================= -->
+
+<nav id="mainNav" style="display: none;">
+    <div class="logo-container">
+        <img src="https://image2url.com/r2/default/images/1771323553471-16d56b64-3a63-4df6-a3ea-50964dce80f8.png" alt="Choco-Mengga Logo" class="logo" onclick="toggleMenu()">
+        <span class="logo-text">Choco-Mengga Ball</span>
+    </div>
+
+    <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#" onclick="openContactModal(event)">Contact</a></li>
+    <li><a href="#" onclick="openAboutModal(event)">About</a></li>
+    <li id="cartNavItem" class="hidden"><a href="#" onclick="openCartModal(event)">Cart</a></li>
+    </ul>
+
+    <div class="dropdown" id="dropdownMenu">
+    <a href="#" onclick="logout()">Logout</a>
+    </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <div class="hero" id="mainHero" style="display: none;">
+    <section class="hero-section">
+    <div class="hero-content">
+    <h1>Where Chocolate Meets Tropical Delight</h1>
+    <p>Sophisticated flavor description.</p>
+    <button id="orderNowBtn" class="cta-button" onclick="openOrderModal()">Order Now</button>
+    </div>
+    </section>
+
+    <!-- WHY CHOOSE US SECTION -->
+    <section class="why-choose-us">
+    <h2>Why Our Cookies Stand Out</h2>
+    <div class="product-cards">
+    <div class="product-card">
+        <div class="product-image choco-mengga" style="background-image: url('https://image2url.com/r2/default/images/1771525359490-1a687cd9-0aec-4a1d-b71b-e3ad355d44b0.jpg'); background-size: cover; background-position: center;"></div>
+        <div class="product-card-content">
+        <h3>Graham Balls Magic</h3>
+        <p>Graham Balls Magic soft, crunchy, and melt-in-your-mouth moments.</p>
+        </div>
+    </div>
+    <div class="product-card">
+        <div class="product-image pastries" style="background-image: url('https://image2url.com/r2/default/images/1771525266739-7824784e-08d4-4163-ab15-9732886b65fe.jpg'); background-size: cover; background-position: center;"></div>
+        <div class="product-card-content">
+        <h3>Our Sweet Advantage</h3>
+        <p>Made with love and quality ingredients</p>
+        </div>
+    </div>
+    <div class="product-card">
+        <div class="product-image cakes" style="background-image: url('https://image2url.com/r2/default/images/1771526343832-546fc44f-c254-450a-8d00-4620adde2140.jpg'); background-size: cover; background-position: center;"></div>
+        <div class="product-card-content">
+        <h3>Custom Graham-Ball</h3>
+        <p>Beautiful custom cakes for every celebration</p>
+        </div>
+    </div>
+    </div>
+    </section>
+
+    <!-- VISIT US TODAY SECTION -->
+    <section class="visit-us">
+    <div class="visit-content">
+    <h2>Come and Taste the Sweetness!</h2>
+    <p>Freshly made Choco-Mengga Balls, crafted with love and the finest ingredients. Taste the chocolatey-mango goodness in every bite!</p>
+    <button class="cta-button">Get Directions</button>
+    </div>
+    <div class="visit-gallery">
+    </div>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="bakery-footer">
+    <p>&copy; 2026 Choco-Mengga Ball Bakery. All rights reserved.</p>
+    </footer>
+    </div>
+
+    <!-- ORDER MODAL (hidden by default) -->
+    <div id="orderModal" class="modal hidden">
+        <div class="modal-overlay" onclick="closeOrderModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeOrderModal()">×</button>
+            <!-- PRODUCT GALLERY SECTION -->
+            <section class="product-gallery">
+                <h2>Explore Our Graham Balls</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item-full">
+                        <div class="gallery-image choco-mengga-ball" style="background-image: url('https://image2url.com/r2/default/images/1771522945588-7fbd1ed7-fe73-425c-89e9-432b2b0a606f.png'); background-size: cover; background-position: center;"></div>
+                        <div class="gallery-item-content">
+                        <span>Chocolate sprinkles</span>
+                        <span class="product-price">₱10.00</span>
+                        <button class="add-to-cart" onclick="addToCart('Chocolate sprinkles')">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="gallery-item-full">
+                        <div class="gallery-image cupcakes" style="background-image: url('https://image2url.com/r2/default/images/1771523132221-ea256bfc-8079-4d29-9197-9522d236bbc9.png'); background-size: cover; background-position: center;"></div>
+                        <div class="gallery-item-content">
+                        <span>Rainbow sprinkles</span>
+                        <span class="product-price">18.00</span>
+                        <button class="add-to-cart" onclick="addToCart('Rainbow sprinkles')">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="gallery-item-full">
+                        <div class="gallery-image layered-cake" style="background-image: url('https://image2url.com/r2/default/images/1771523308373-e0b2f760-abce-4e05-84eb-43d89f3ce4d2.jpg'); background-size: cover; background-position: center;"></div>
+                        <div class="gallery-item-content">
+                        <span>Crushed graham</span>
+                        <span class="product-price">₱28.00</span>
+                        <button class="add-to-cart" onclick="addToCart('Crushed graham')">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="gallery-item-full">
+                        <div class="gallery-image croissants" style="background-image: url('https://image2url.com/r2/default/images/1771523551910-6eb963fe-e073-4061-b776-130e1aa2f1a6.jpg'); background-size: cover; background-position: center;"></div>
+                        <div class="gallery-item-content">
+                        <span>Cocoa powder</span>
+                        <span class="product-price">₱30.00</span>
+                        <button class="add-to-cart" onclick="addToCart('Cocoa powder')">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- CART MODAL -->
+            <div id="cartModal" class="modal hidden">
+                <div class="modal-overlay" onclick="closeCartModal()"></div>
+                <div class="modal-content">
+                    <button class="modal-close" onclick="closeCartModal()">×</button>
+                    <h2>Viewing Cart</h2>
+                    <div id="cartItems" class="cart-items">
+                        <!-- Cart items will be inserted here -->
+                    </div>
+                    <div class="cart-summary">
+                        <div class="cart-total">
+                            <span>Grand Total:</span>
+                            <span id="grandTotal">$0.00</span>
+                        </div>
+                        <button id="checkoutBtn" class="cta-button" onclick="proceedToCheckout()">Checkout</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CHECKOUT MODAL -->
+            <div id="checkoutModal" class="modal hidden">
+                <div class="modal-overlay" onclick="closeCheckoutModal()"></div>
+                <div class="modal-content">
+                    <button class="modal-close" onclick="closeCheckoutModal()">×</button>
+                    <h2>Order Information</h2>
+                    <form id="checkoutForm" onsubmit="submitOrder(event)">
+                        <div class="form-group">
+                            <label for="customerName">Name:</label>
+                            <input type="text" id="customerName" placeholder="Full Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customerAddress">Address:</label>
+                            <input type="text" id="customerAddress" placeholder="Street Address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customerPhone">Phone Number:</label>
+                            <input type="tel" id="customerPhone" placeholder="Phone Number" required>
+                        </div>
+                        <button type="submit" class="cta-button">Confirm Order</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- SUCCESS MODAL -->
+            <div id="successModal" class="modal hidden">
+                <div class="modal-overlay"></div>
+                <div class="modal-content success-content">
+                    <div class="success-message">
+                        <h2>Thank You!</h2>
+                        <p>Your order has been successfully placed.</p>
+                        <div class="order-id">
+                            <span>Order ID:</span>
+                            <span id="generatedOrderId">#1001</span>
+                        </div>
+                        <button class="cta-button" onclick="backToHome()">Back to Home</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTACT MODAL -->
+            <div id="contactModal" class="modal hidden">
+                <div class="modal-overlay" onclick="closeContactModal()"></div>
+                <div class="modal-content contact-content">
+                    <button class="modal-close" onclick="closeContactModal()">×</button>
+                    <div class="contact-header">
+                        <h2>Get in Touch</h2>
+                        <p class="contact-subtitle">Have questions or special requests? We'd love to hear from you!</p>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            <div class="contact-details">
+                                <span class="contact-label">Contact Number</span>
+                                <span class="contact-value">+63 917 482 6395</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📲</span>
+                            <div class="contact-details">
+                                <span class="contact-label">Viber / WhatsApp</span>
+                                <span class="contact-value">+63 995 731 2846</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📩</span>
+                            <div class="contact-details">
+                                <span class="contact-label">Email Address</span>
+                                <span class="contact-value">orders@yourbrand.com</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">🌐</span>
+                            <div class="contact-details">
+                                <span class="contact-label">Facebook Page</span>
+                                <span class="contact-value">facebook.com/yourbrand</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📸</span>
+                            <div class="contact-details">
+                                <span class="contact-label">Instagram</span>
+                                <span class="contact-value">@yourbrand</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📍</span>
+                            <div class="contact-details">
+                                <span class="contact-label">Location</span>
+                                <span class="contact-value">Diliman, Quezon City, Philippines</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-divider"></div>
+                    <div class="contact-hours">
+                        <span class="hours-icon">🕒</span>
+                        <div class="hours-details">
+                            <span class="hours-label">Business Hours</span>
+                            <span class="hours-value">Monday – Sunday | 9:00 AM – 8:00 PM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ABOUT MODAL -->
+            <div id="aboutModal" class="modal hidden">
+                <div class="modal-overlay" onclick="closeAboutModal()"></div>
+                <div class="modal-content about-content">
+                    <button class="modal-close" onclick="closeAboutModal()">×</button>
+                    <div class="about-header">
+                        <h2>About</h2>
+                    </div>
+                    <div class="about-description">
+                        <p>Graham Ball with Choco and Mango Flavor is a sweet, no-bake dessert made from crushed graham crackers, condensed milk, chocolate, and fresh mango. It has a soft, creamy texture that makes it very delicious and enjoyable to eat.</p>
+                        <p>The chocolate gives a rich and sweet flavor, while the mango adds a fresh and fruity taste. When combined, these flavors create a perfect balance of sweetness with a slight tangy twist.</p>
+                        <p>This dessert is easy to prepare since it does not require baking. The mixture is shaped into small balls and coated with crushed graham crackers, cocoa powder, or chocolate sprinkles. It is best served chilled for a more refreshing taste.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Toast container -->
+                <div id="toast" class="toast hidden"></div>
+
+    <script src="script.js"></script>
+
+    </body>
+    </html>
